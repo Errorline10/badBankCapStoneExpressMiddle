@@ -3,8 +3,8 @@
 const express = require('express');
 
 // Constants
-const PORT = 8080;
-const HOST = 'localhost';
+const PORT = 3000;
+const HOST = '0.0.0.0';
 
 // App
 const app = express();
@@ -28,7 +28,7 @@ app.get('/create', (req, res) => {
     const collection = client.db("UserTable").collection("UserTableCollection");
     // perform actions on the collection object
 
-    let myobj = { userId: '555', email: 'mboston30@gmail.com', password: 'password' }
+    let myobj = { userId: '555', email: 'mboston30@gmail.com', password: 'passwordfromExpress' }
     collection.insertOne(myobj, function (err, res) {
       if (err) throw err;
       return console.log("1 document inserted: ", myobj);
