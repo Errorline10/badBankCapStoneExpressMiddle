@@ -1,13 +1,13 @@
 'use strict';
 
-const express = require('express');
+// create an express app
+const express = require("express")
+const app = express()
 
-// Constants
-const PORT = 3000;
-const HOST = '0.0.0.0';
+// use the express-static middleware
+app.use(express.static("public"))
 
 // App
-const app = express();
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
@@ -40,6 +40,9 @@ app.get('/create', (req, res) => {
 
 });
 
+// start the server listening for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+
+console.log('Express server is running: ', process.env.PORT);
